@@ -5,6 +5,7 @@ const PORT = 2000;
 const chalk = require("chalk");
 const morgan = require("morgan");
 const countryRoutes = require("./routes/country");
+const authRoutes = require("./routes/auth");
 
 // *  Logger & Parser
 app.use(morgan("dev"));
@@ -14,6 +15,7 @@ app.use(express.json());
 app.get("/", (req, res, next) => {
   res.send({ succes: true, message: "Hello From Express" });
 });
+app.use(authRoutes);
 app.use(countryRoutes);
 
 // * Server Listen
