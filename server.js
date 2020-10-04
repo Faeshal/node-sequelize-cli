@@ -4,9 +4,7 @@ const app = express();
 const PORT = 2000;
 const chalk = require("chalk");
 const morgan = require("morgan");
-// const authRoutes = require("./routes/auth");
-// const sequelize = require("./models/index");
-const sequelize = require("./models/index");
+const countryRoutes = require("./routes/country");
 
 // *  Logger & Parser
 app.use(morgan("dev"));
@@ -16,7 +14,7 @@ app.use(express.json());
 app.get("/", (req, res, next) => {
   res.send({ succes: true, message: "Hello From Express" });
 });
-// app.use("/api", countryRoutes);
+app.use(countryRoutes);
 
 // * Server Listen
 app.listen(PORT, (err) => {
